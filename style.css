@@ -52,7 +52,6 @@ body {
 .right-panel {
     justify-content: flex-end; /* 오른쪽 정렬의 핵심 */
     align-items: center;       /* 세로 중앙 정렬 */
-    border-left: 1px solid #333;
     text-align: right;         /* 텍스트도 오른쪽 정렬 */
 }
 
