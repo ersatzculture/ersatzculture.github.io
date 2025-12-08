@@ -45,7 +45,7 @@ body {
 
 #year-list li {
     /* 3. 연도 목록 폰트 사이즈 키움 (3rem -> 5rem) */
-    font-size: 5rem;
+    font-size: 4rem;
     cursor: pointer;
     margin-bottom: 20px;
     opacity: 0.5;
