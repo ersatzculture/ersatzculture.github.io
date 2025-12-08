@@ -2,37 +2,40 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #111; /* 배경색: 짙은 회색 */
-    color: #fff; /* 글자색: 흰색 */
-    font-family: 'Helvetica', sans-serif; /* 폰트 설정 */
+    background-color: #111;
+    color: #fff;
+    /* 1. 폰트 변경: Helvetica Neue를 최우선으로 적용 */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     overflow-x: hidden;
 }
 
-/* 화면 전환용 클래스 */
 .hidden { display: none !important; }
 
-/* 1. 메인 화면 레이아웃 */
+/* 메인 화면 레이아웃 */
 .container {
     display: flex;
-    height: 100vh; /* 화면 전체 높이 사용 */
+    height: 100vh;
 }
 
 .left-panel, .right-panel {
-    flex: 1; /* 화면을 5:5로 분할 */
+    flex: 1;
     display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
+    align-items: center;
     padding: 50px;
+    position: relative; /* 연락처 위치를 위해 기준점 설정 */
 }
 
 .left-panel h1 {
-    font-size: 4rem;
-    line-height: 1.2;
+    /* 2. 제목 폰트 사이즈 키움 (4rem -> 6rem) */
+    font-size: 6rem; 
+    line-height: 1.1;
     margin: 0;
+    letter-spacing: -2px; /* 자간을 살짝 좁혀서 더 단단한 느낌 */
 }
 
 .right-panel {
-    justify-content: flex-start; /* 왼쪽 정렬 */
-    border-left: 1px solid #333; /* 중앙 구분선 */
+    justify-content: flex-start;
+    border-left: 1px solid #333;
 }
 
 #year-list {
@@ -41,23 +44,49 @@ body {
 }
 
 #year-list li {
-    font-size: 3rem;
+    /* 3. 연도 목록 폰트 사이즈 키움 (3rem -> 5rem) */
+    font-size: 5rem;
     cursor: pointer;
     margin-bottom: 20px;
     opacity: 0.5;
     transition: opacity 0.3s;
+    font-weight: bold; /* 굵게 변경 */
 }
 
 #year-list li:hover {
-    opacity: 1; /* 마우스 올리면 밝게 */
-    text-decoration: underline;
+    opacity: 1;
+    text-decoration: none; /* 밑줄 제거 (깔끔하게) */
+    color: #fff;
+    transform: translateX(20px); /* 마우스 올리면 살짝 오른쪽으로 이동 */
+    transition: transform 0.3s;
 }
 
-/* 2. 아카이브 화면 레이아웃 */
+/* 4. 새로 추가된 하단 연락처 디자인 */
+.contact-info {
+    position: absolute; /* 위치 고정 */
+    bottom: 50px;       /* 바닥에서 50px 띄움 */
+    left: 50px;         /* 왼쪽에서 50px 띄움 */
+    font-size: 1rem;
+    color: #666;        /* 회색으로 은은하게 */
+    line-height: 1.6;
+}
+
+.contact-info a {
+    color: #666;
+    text-decoration: none;
+    border-bottom: 1px solid #666;
+}
+
+.contact-info a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+/* 아카이브 화면 등 나머지는 기존과 동일 유지 */
 #archive-screen {
     padding: 40px;
     max-width: 800px;
-    margin: 0 auto; /* 중앙 정렬 */
+    margin: 0 auto;
 }
 
 header {
@@ -65,11 +94,12 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 60px;
-    position: sticky; /* 스크롤해도 상단 고정 */
+    position: sticky;
     top: 0;
     background-color: #111;
     padding: 20px 0;
     border-bottom: 1px solid #333;
+    z-index: 10;
 }
 
 #back-btn {
@@ -79,16 +109,16 @@ header {
     padding: 10px 20px;
     cursor: pointer;
     font-size: 1rem;
+    font-family: 'Helvetica Neue', sans-serif;
 }
 
 #back-btn:hover { background: #fff; color: #000; }
 
-/* 영상 아이템 스타일 */
 .video-item { margin-bottom: 100px; }
 
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 비율 유지 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     margin-bottom: 20px;
