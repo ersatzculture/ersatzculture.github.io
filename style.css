@@ -1,0 +1,105 @@
+/* 기본 설정 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #111; /* 배경색: 짙은 회색 */
+    color: #fff; /* 글자색: 흰색 */
+    font-family: 'Helvetica', sans-serif; /* 폰트 설정 */
+    overflow-x: hidden;
+}
+
+/* 화면 전환용 클래스 */
+.hidden { display: none !important; }
+
+/* 1. 메인 화면 레이아웃 */
+.container {
+    display: flex;
+    height: 100vh; /* 화면 전체 높이 사용 */
+}
+
+.left-panel, .right-panel {
+    flex: 1; /* 화면을 5:5로 분할 */
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 50px;
+}
+
+.left-panel h1 {
+    font-size: 4rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.right-panel {
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    border-left: 1px solid #333; /* 중앙 구분선 */
+}
+
+#year-list {
+    list-style: none;
+    padding: 0;
+}
+
+#year-list li {
+    font-size: 3rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+#year-list li:hover {
+    opacity: 1; /* 마우스 올리면 밝게 */
+    text-decoration: underline;
+}
+
+/* 2. 아카이브 화면 레이아웃 */
+#archive-screen {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    position: sticky; /* 스크롤해도 상단 고정 */
+    top: 0;
+    background-color: #111;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+#back-btn {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#back-btn:hover { background: #fff; color: #000; }
+
+/* 영상 아이템 스타일 */
+.video-item { margin-bottom: 100px; }
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 비율 유지 */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+.video-info h3 { margin: 0 0 10px 0; font-size: 1.5rem; }
+.video-info .date { color: #888; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+.video-info p { line-height: 1.6; color: #ccc; }
