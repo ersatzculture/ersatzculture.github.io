@@ -19,7 +19,7 @@ function init(data) {
     // 2. 메인 화면에 연도 목록 생성
     years.forEach(year => {
         const li = document.createElement('li');
-        li.textContent = `[ ${year} ]`; // [ 2025 ] 형태로 출력
+        li.textContent = `${year}`;
         li.addEventListener('click', () => showArchive(year, data));
         yearList.appendChild(li);
     });
