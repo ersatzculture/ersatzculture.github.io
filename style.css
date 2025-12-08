@@ -4,7 +4,6 @@ body {
     padding: 0;
     background-color: #111;
     color: #fff;
-    /* 1. 폰트 변경: Helvetica Neue를 최우선으로 적용 */
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     overflow-x: hidden;
 }
@@ -20,54 +19,72 @@ body {
 .left-panel, .right-panel {
     flex: 1;
     display: flex;
-    align-items: center;
     padding: 50px;
-    position: relative; /* 연락처 위치를 위해 기준점 설정 */
+    position: relative;
 }
 
-.left-panel h1 {
-    /* 2. 제목 폰트 사이즈 키움 (4rem -> 6rem) */
-    font-size: 6rem; 
-    line-height: 1.1;
+/* 왼쪽 패널 (제목 영역) 수정됨 */
+.left-panel {
+    flex-direction: column;     /* 세로 정렬 */
+    justify-content: center;    /* 중앙 위치 */
+    align-items: flex-start;    /* 왼쪽 정렬 */
+}
+
+/* 메인 제목 (ARCHIVE) 스타일 */
+.main-title {
+    font-size: 6rem;
+    font-weight: 900;
     margin: 0;
-    letter-spacing: -2px; /* 자간을 살짝 좁혀서 더 단단한 느낌 */
+    line-height: 0.9;
+    letter-spacing: -3px;
+    color: #fff;
+}
+
+/* 서브 제목 (SEOJUNG LEE) 스타일 */
+.sub-title {
+    font-size: 3rem;
+    font-weight: normal;
+    margin-top: 15px;
+    letter-spacing: 0;
+    color: #888; /* 회색 */
 }
 
 .right-panel {
     justify-content: flex-start;
+    align-items: center;
     border-left: 1px solid #333;
 }
 
+/* 연도 목록 스타일 */
 #year-list {
     list-style: none;
     padding: 0;
 }
 
 #year-list li {
-    /* 3. 연도 목록 폰트 사이즈 키움 (3rem -> 5rem) */
     font-size: 4rem;
+    font-weight: bold;
     cursor: pointer;
     margin-bottom: 20px;
     opacity: 0.5;
     transition: opacity 0.3s;
-    font-weight: bold; /* 굵게 변경 */
 }
 
 #year-list li:hover {
     opacity: 1;
-    text-decoration: none; /* 밑줄 제거 (깔끔하게) */
+    text-decoration: none;
     color: #fff;
-    transform: translateX(20px); /* 마우스 올리면 살짝 오른쪽으로 이동 */
+    transform: translateX(20px);
     transition: transform 0.3s;
 }
 
-/* 4. 새로 추가된 하단 연락처 디자인 */
+/* 하단 연락처 스타일 */
 .contact-info {
-    position: absolute; /* 위치 고정 */
-    bottom: 50px;       /* 바닥에서 50px 띄움 */
-    left: 50px;         /* 왼쪽에서 50px 띄움 */
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
     font-size: 1rem;
-    color: #666;        /* 회색으로 은은하게 */
+    color: #666;
     line-height: 1.6;
 }
 
@@ -82,7 +99,7 @@ body {
     border-bottom-color: #fff;
 }
 
-/* 아카이브 화면 등 나머지는 기존과 동일 유지 */
+/* 아카이브(영상 목록) 화면 */
 #archive-screen {
     padding: 40px;
     max-width: 800px;
