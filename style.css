@@ -150,3 +150,14 @@ header {
 .video-info h3 { margin: 0 0 10px 0; font-size: 1.5rem; }
 .video-info .date { color: #888; font-size: 0.9rem; margin-bottom: 10px; display: block; }
 .video-info p { line-height: 1.6; color: #ccc; }
+
+/* 왼쪽 패널을 '세로 정렬'로 강제하는 코드 */
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column !important; /* 핵심: 무조건 세로로 쌓기 */
+    justify-content: center;           /* 세로 중앙 정렬 */
+    align-items: flex-start;           /* 왼쪽 정렬 */
+    padding: 50px;
+    position: relative;
+}
