@@ -51,7 +51,7 @@ body {
 
 .right-panel {
     justify-content: flex-start;
-    align-items: center;
+    align-items: right;
     border-left: 1px solid #333;
 }
 
