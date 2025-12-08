@@ -32,7 +32,7 @@ body {
 
 /* 메인 제목 (ARCHIVE) 스타일 */
 .main-title {
-    font-size: 6rem;
+    font-size: 3rem;
     font-weight: 900;
     margin: 0;
     line-height: 0.9;
@@ -42,7 +42,7 @@ body {
 
 /* 서브 제목 (SEOJUNG LEE) 스타일 */
 .sub-title {
-    font-size: 3rem;
+    font-size: 1rem;
     font-weight: normal;
     margin-top: 15px;
     letter-spacing: 0;
