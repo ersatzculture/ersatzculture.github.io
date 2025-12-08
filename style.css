@@ -33,7 +33,7 @@ body {
 /* 메인 제목 (ARCHIVE) 스타일 */
 .main-title {
     font-size: 3rem;
-    font-weight: 900;
+    font-weight: 700;
     margin: 0;
     line-height: 0.9;
     letter-spacing: -3px;
@@ -45,7 +45,7 @@ body {
     font-size: 1rem;
     font-weight: normal;
     margin-top: 15px;
-    letter-spacing: 0;
+    letter-spacing: -1px;
     color: #fff;
 }
 
