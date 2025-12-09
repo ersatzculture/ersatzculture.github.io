@@ -201,7 +201,7 @@ header {
     flex: 0 0 auto;         /* 찌그러지지 않고 자기 크기 유지 */
     width: 85%;             /* 화면 너비의 85%만큼 차지 (취향껏 조절 가능) */
     max-width: 600px;       /* 너무 커지지 않게 최대폭 제한 */
-    scroll-snap-align: center; /* 스크롤 멈출 때 가운데 정렬 */
+    scroll-snap-align: start; /* 스크롤 멈출 때 가운데 정렬 */
 }
 
 /* 가로 스크롤 내의 실제 이미지 */
