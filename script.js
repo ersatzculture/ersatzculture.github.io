@@ -13,7 +13,7 @@ const backBtn = document.getElementById('back-btn');
 const selectedYearTitle = document.getElementById('selected-year-title');
 
 function init(data) {
-    // 1. 데이터에서 연도만 추출해서 중복 제거 (Set 사용)
+    // 1. 데이터에서 연도만 추출해서 중복 제거 (Set 사용) 및 오름차순 정렬
     const years = [...new Set(data.map(item => item.year))].sort();
 
     // 2. 메인 화면에 연도 목록 생성
@@ -39,22 +39,42 @@ function showArchive(year, data) {
     const filteredData = data.filter(item => item.year === year);
 
     // HTML 생성하여 목록에 추가
-    // HTML 생성하여 목록에 추가
     filteredData.forEach(item => {
-        let videoSrc = '';
+        let contentHTML = ''; // 영상이나 사진이 들어갈 변수
 
-        // 비메오 ID가 있으면 비메오 주소 사용, 아니면 유튜브 주소 사용
-        if (item.vimeoId) {
-            videoSrc = `https://player.vimeo.com/video/${item.vimeoId}`;
-        } else {
-            videoSrc = `https://www.youtube.com/embed/${item.youtubeId}`;
-        }
-
-        const videoHTML = `
-            <div class="video-item">
+        // [변경됨] 1. 사진(photo)일 경우: 이미지 태그 사용
+        if (item.type === 'photo') {
+            // 텍스트(긴 글)가 있으면 문단 태그로 감싸기
+            const longText = item.text ? `<p class="long-text">${item.text}</p>` : '';
+            
+            contentHTML = `
+                <div class="photo-wrapper">
+                    <img src="${item.imageSrc}" alt="${item.title}">
+                </div>
+                ${longText}
+            `;
+        } 
+        // [변경됨] 2. 영상(video)일 경우: 기존 로직 유지 (유튜브/비메오)
+        else {
+            let videoSrc = '';
+            // 비메오 ID가 있으면 비메오 주소 사용, 아니면 유튜브 주소 사용
+            if (item.vimeoId) {
+                videoSrc = `https://player.vimeo.com/video/${item.vimeoId}`;
+            } else {
+                videoSrc = `https://www.youtube.com/embed/${item.youtubeId}`;
+            }
+            
+            contentHTML = `
                 <div class="video-wrapper">
                     <iframe src="${videoSrc}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                 </div>
+            `;
+        }
+
+        // 최종 HTML 조립
+        const itemHTML = `
+            <div class="video-item">
+                ${contentHTML}
                 <div class="video-info">
                     <h3>${item.title}</h3>
                     <span class="date">${item.date}</span>
@@ -62,7 +82,7 @@ function showArchive(year, data) {
                 </div>
             </div>
         `;
-        videoList.innerHTML += videoHTML;
+        videoList.innerHTML += itemHTML;
     });
     
     // 화면 최상단으로 이동
