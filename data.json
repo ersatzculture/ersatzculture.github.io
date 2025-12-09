@@ -65,5 +65,14 @@
     "date": "2013.09.18",
     "description": "테스트용 영상입니다. 오신 김에 한 번 들어보세요.",
     "vimeoId": "74801407"
+  },
+  {
+    "id": 7,
+    "type": "photo",
+    "year": "2025",
+    "title": "Saul Bass 레포트 표지 디자인",
+    "date": "2025.05.12",
+    "description": "디지털비디오와 무빙이미지 중간과제 Saul Bass 레포트 표지 디자인",
+    "image": "images/SaulBassReport01"
   }
 ]
