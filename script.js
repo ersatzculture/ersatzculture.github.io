@@ -14,7 +14,7 @@ const selectedYearTitle = document.getElementById('selected-year-title');
 
 function init(data) {
     // 1. 데이터에서 연도만 추출해서 중복 제거 (Set 사용)
-    const years = [...new Set(data.map(item => item.year))].sort().reverse();
+    const years = [...new Set(data.map(item => item.year))].sort();
 
     // 2. 메인 화면에 연도 목록 생성
     years.forEach(year => {
