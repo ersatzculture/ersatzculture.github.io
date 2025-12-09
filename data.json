@@ -56,5 +56,14 @@
       "images/dd_final_page_10.jpg",
       "images/dd_final_page_11.jpg"
     ]
+  },
+   {
+    "id": 6,
+    "type": "video",
+    "year": "2026",
+    "title": "Frank Ocean - Pilot jones (Live in Amsterdam)",
+    "date": "2013.09.18",
+    "description": "테스트용 영상입니다. 오신 김에 한 번 들어보세요.",
+    "vimeoId": "74801407"
   }
 ]
