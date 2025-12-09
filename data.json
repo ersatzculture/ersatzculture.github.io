@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "type": "video",
     "year": "2025",
     "title": "Masking05",
     "date": "2025.04.09",
@@ -9,6 +10,7 @@
   },
   {
     "id": 2,
+    "type": "video",
     "year": "2025",
     "title": "Design09",
     "date": "2025.05.04",
@@ -17,6 +19,7 @@
   },
   {
     "id": 3,
+    "type": "video",
     "year": "2025",
     "title": "Final02",
     "date": "2025.06.10",
@@ -25,6 +28,7 @@
   },
    {
     "id": 4,
+    "type": "video",
     "year": "2026",
     "title": "Oklou - obvious, choke enough, blade bird | NTS Session",
     "date": "2025.12.09",
