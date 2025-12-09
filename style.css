@@ -83,6 +83,7 @@ body {
 
 /* 하단 연락처 스타일 */
 .contact-info {
+    font-family: 'Futura PT', 'Futura', 'Century Gothic', sans-serif;
     position: absolute;
     bottom: 50px;
     left: 50px;
