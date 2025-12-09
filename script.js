@@ -45,13 +45,16 @@ function showArchive(year, data) {
         // [로직 1] 사진(photo)일 경우: 한 장 또는 여러 장 처리
         if (item.type === 'photo') {
             const longText = item.text ? `<p class="long-text">${item.text}</p>` : '';
-            
             let imagesHTML = '';
+            // 기본 컨테이너 클래스 (한 장일 때 사용)
+            let containerClass = 'photo-wrapper'; 
 
-            // 1-1. 여러 장인 경우 (images: ["a.jpg", "b.jpg"])
+            // 1-1. 여러 장인 경우 (images: ["a.jpg", "b.jpg"]) -> 가로 스크롤 적용
             if (item.images && item.images.length > 0) {
+                containerClass = 'horizontal-scroll-container'; // 클래스 변경
                 item.images.forEach(img => {
-                    imagesHTML += `<img src="${img}" alt="${item.title}">`;
+                    // 각 이미지를 .scroll-item div로 감쌈
+                    imagesHTML += `<div class="scroll-item"><img src="${img}" alt="${item.title}"></div>`;
                 });
             } 
             // 1-2. 한 장인 경우 (imageSrc: "a.jpg") - 기존 방식 호환
@@ -60,7 +63,7 @@ function showArchive(year, data) {
             }
 
             contentHTML = `
-                <div class="photo-wrapper">
+                <div class="${containerClass}">
                     ${imagesHTML}
                 </div>
                 ${longText}
@@ -72,40 +75,3 @@ function showArchive(year, data) {
             // 비메오 ID가 있으면 비메오 주소 사용, 아니면 유튜브 주소 사용
             if (item.vimeoId) {
                 videoSrc = `https://player.vimeo.com/video/${item.vimeoId}`;
-            } else {
-                videoSrc = `https://www.youtube.com/embed/${item.youtubeId}`;
-            }
-            
-            contentHTML = `
-                <div class="video-wrapper">
-                    <iframe src="${videoSrc}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            `;
-        }
-
-        // 최종 HTML 조립
-        const itemHTML = `
-            <div class="video-item">
-                ${contentHTML}
-                <div class="video-info">
-                    <h3>${item.title}</h3>
-                    <span class="date">${item.date}</span>
-                    <p>${item.description}</p>
-                </div>
-            </div>
-        `;
-        videoList.innerHTML += itemHTML;
-    });
-    
-    // 화면 최상단으로 이동
-    window.scrollTo(0, 0);
-}
-
-// 뒤로가기 버튼 클릭 이벤트
-backBtn.addEventListener('click', () => {
-    archiveScreen.classList.add('hidden');
-    mainScreen.classList.remove('hidden');
-    
-    // 비디오 정지를 위해 목록 비우기 (소리 끄기용)
-    videoList.innerHTML = '';
-});
