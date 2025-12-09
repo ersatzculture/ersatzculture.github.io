@@ -165,3 +165,20 @@ header {
     padding: 50px;
     position: relative;
 }
+
+/* 새로 추가된 사진 전용 스타일 */
+.photo-wrapper img {
+    width: 100%;       
+    height: auto;      
+    display: block;    
+    margin-bottom: 20px; 
+}
+
+.long-text {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    line-height: 1.8; 
+    color: #ddd;      
+    white-space: pre-wrap; 
+}
