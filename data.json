@@ -39,9 +39,21 @@
     "id": 5,
     "type": "photo",
     "year": "2021",
-    "title": "Oklou - obvious, choke enough, blade bird | NTS Session",
-    "date": "2025.12.09",
-    "description": "테스트용 영상입니다. 오신 김에 한 번 들어보세요.",
-    "youtubeId": "ADtPzdWiTQ0"
+    "title": "용기있는 사람들 책 디자인 과제",
+    "date": "2021.05.30",
+    "description": "2021년 1학기 디지털디자인 최종과제",
+    "text": "테스트 중입니다",
+    "images": [
+      "images/dd_final_page_01"
+      "images/dd_final_page_02"
+      "images/dd_final_page_03"
+      "images/dd_final_page_04"
+      "images/dd_final_page_05"
+      "images/dd_final_page_06"
+      "images/dd_final_page_07"
+      "images/dd_final_page_08"
+      "images/dd_final_page_09"
+      "images/dd_final_page_10"
+      "images/dd_final_page_11"
   }
 ]
