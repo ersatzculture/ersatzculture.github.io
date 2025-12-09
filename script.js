@@ -3,6 +3,10 @@ fetch('data.json')
     .then(response => response.json())
     .then(data => {
         init(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("데이터를 불러오는 중 오류가 발생했습니다.");
     });
 
 const mainScreen = document.getElementById('main-screen');
@@ -13,10 +17,10 @@ const backBtn = document.getElementById('back-btn');
 const selectedYearTitle = document.getElementById('selected-year-title');
 
 function init(data) {
-    // 1. 데이터에서 연도만 추출해서 중복 제거 (Set 사용) 및 오름차순 정렬
+    // 1. 연도 추출 및 정렬
     const years = [...new Set(data.map(item => item.year))].sort();
 
-    // 2. 메인 화면에 연도 목록 생성 (대괄호 없이 숫자만 출력)
+    // 2. 메인 화면에 연도 목록 생성
     years.forEach(year => {
         const li = document.createElement('li');
         li.textContent = `${year}`;
@@ -25,39 +29,37 @@ function init(data) {
     });
 }
 
-// 아카이브 화면 보여주기 함수
 function showArchive(year, data) {
     // 화면 전환
     mainScreen.classList.add('hidden');
     archiveScreen.classList.remove('hidden');
-    selectedYearTitle.textContent = year; // 헤더에 연도 표시
+    selectedYearTitle.textContent = year; 
 
-    // 기존 목록 비우기
+    // 목록 비우기
     videoList.innerHTML = '';
 
-    // 해당 연도 데이터만 필터링
+    // 데이터 필터링
     const filteredData = data.filter(item => item.year === year);
 
-    // HTML 생성하여 목록에 추가
+    // 목록 생성
     filteredData.forEach(item => {
-        let contentHTML = ''; // 영상이나 사진이 들어갈 변수
+        let contentHTML = ''; 
 
-        // [로직 1] 사진(photo)일 경우: 한 장 또는 여러 장 처리
+        // [로직 1] 사진(photo)일 경우
         if (item.type === 'photo') {
             const longText = item.text ? `<p class="long-text">${item.text}</p>` : '';
             let imagesHTML = '';
-            // 기본 컨테이너 클래스 (한 장일 때 사용)
-            let containerClass = 'photo-wrapper'; 
+            let containerClass = 'photo-wrapper'; // 기본(한장)
 
-            // 1-1. 여러 장인 경우 (images: ["a.jpg", "b.jpg"]) -> 가로 스크롤 적용
+            // 여러 장인 경우 (가로 스크롤)
             if (item.images && item.images.length > 0) {
-                containerClass = 'horizontal-scroll-container'; // 클래스 변경
+                containerClass = 'horizontal-scroll-container'; 
                 item.images.forEach(img => {
-                    // 각 이미지를 .scroll-item div로 감쌈
+                    // div.scroll-item으로 감싸기
                     imagesHTML += `<div class="scroll-item"><img src="${img}" alt="${item.title}"></div>`;
                 });
             } 
-            // 1-2. 한 장인 경우 (imageSrc: "a.jpg") - 기존 방식 호환
+            // 한 장인 경우
             else if (item.imageSrc) {
                 imagesHTML = `<img src="${item.imageSrc}" alt="${item.title}">`;
             }
@@ -69,9 +71,40 @@ function showArchive(year, data) {
                 ${longText}
             `;
         } 
-        // [로직 2] 영상(video)일 경우 (기본값)
+        // [로직 2] 영상(video)일 경우
         else {
             let videoSrc = '';
-            // 비메오 ID가 있으면 비메오 주소 사용, 아니면 유튜브 주소 사용
             if (item.vimeoId) {
                 videoSrc = `https://player.vimeo.com/video/${item.vimeoId}`;
+            } else {
+                videoSrc = `https://www.youtube.com/embed/${item.youtubeId}`;
+            }
+            contentHTML = `
+                <div class="video-wrapper">
+                    <iframe src="${videoSrc}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            `;
+        }
+
+        const itemHTML = `
+            <div class="video-item">
+                ${contentHTML}
+                <div class="video-info">
+                    <h3>${item.title}</h3>
+                    <span class="date">${item.date}</span>
+                    <p>${item.description}</p>
+                </div>
+            </div>
+        `;
+        videoList.innerHTML += itemHTML;
+    });
+    
+    window.scrollTo(0, 0);
+}
+
+// [중요] 아까 잘렸던 부분입니다!
+backBtn.addEventListener('click', () => {
+    archiveScreen.classList.add('hidden');
+    mainScreen.classList.remove('hidden');
+    videoList.innerHTML = '';
+});
