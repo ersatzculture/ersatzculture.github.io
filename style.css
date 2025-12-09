@@ -32,6 +32,7 @@ body {
 
 /* 메인 제목 (ARCHIVE) 스타일 */
 .main-title {
+    font-family: 'Futura PT', 'Futura', 'Century Gothic', sans-serif;
     font-size: 3rem;
     font-weight: 700;
     margin: 0;
