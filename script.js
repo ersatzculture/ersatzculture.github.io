@@ -39,11 +39,21 @@ function showArchive(year, data) {
     const filteredData = data.filter(item => item.year === year);
 
     // HTML 생성하여 목록에 추가
+    // HTML 생성하여 목록에 추가
     filteredData.forEach(item => {
+        let videoSrc = '';
+
+        // 비메오 ID가 있으면 비메오 주소 사용, 아니면 유튜브 주소 사용
+        if (item.vimeoId) {
+            videoSrc = `https://player.vimeo.com/video/${item.vimeoId}`;
+        } else {
+            videoSrc = `https://www.youtube.com/embed/${item.youtubeId}`;
+        }
+
         const videoHTML = `
             <div class="video-item">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/${item.youtubeId}" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="${videoSrc}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <h3>${item.title}</h3>
