@@ -166,7 +166,11 @@ header {
     position: relative;
 }
 
-/* 새로 추가된 사진 전용 스타일 */
+/* =========================================
+   새로 추가된 사진 전용 스타일 (가로 스크롤 포함)
+   ========================================= */
+
+/* 1. 한 장짜리 사진 스타일 (기존 유지) */
 .photo-wrapper img {
     width: 100%;       
     height: auto;      
@@ -174,6 +178,43 @@ header {
     margin-bottom: 20px; 
 }
 
+/* 2. 여러 장 사진 가로 스크롤 컨테이너 */
+.horizontal-scroll-container {
+    display: flex;          /* 옆으로 나열 */
+    overflow-x: auto;       /* 가로로 넘치면 스크롤바 생성 */
+    gap: 15px;              /* 사진 사이 간격 */
+    padding-bottom: 15px;   /* 하단 스크롤바 공간 확보 */
+    margin-bottom: 20px;    /* 설명글과의 간격 */
+    
+    /* 부드러운 스크롤 경험을 위한 설정 (스냅 효과) */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* iOS에서 부드럽게 */
+}
+
+/* 스크롤바 숨기기 (선택사항 - 주석을 풀면 스크롤바가 안 보입니다) */
+/* .horizontal-scroll-container::-webkit-scrollbar { display: none; } */
+/* .horizontal-scroll-container { -ms-overflow-style: none; scrollbar-width: none; } */
+
+
+/* 가로 스크롤 내의 각 이미지 아이템 박스 */
+.scroll-item {
+    flex: 0 0 auto;         /* 찌그러지지 않고 자기 크기 유지 */
+    width: 85%;             /* 화면 너비의 85%만큼 차지 (취향껏 조절 가능) */
+    max-width: 600px;       /* 너무 커지지 않게 최대폭 제한 */
+    scroll-snap-align: center; /* 스크롤 멈출 때 가운데 정렬 */
+}
+
+/* 가로 스크롤 내의 실제 이미지 */
+.scroll-item img {
+    width: 100%;            /* 박스에 꽉 차게 */
+    height: auto;
+    display: block;
+    /* 이미지 비율을 통일하고 싶다면 아래 주석을 풀고 사용하세요 (예: 4:3 비율) */
+    /* aspect-ratio: 4 / 3; */
+    /* object-fit: cover; */
+}
+
+/* 긴 글 스타일 (기존 유지) */
 .long-text {
     margin-top: 20px;
     margin-bottom: 30px;
