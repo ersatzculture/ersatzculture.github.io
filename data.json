@@ -27,15 +27,6 @@
     "youtubeId": "ZrV0HrV1KuM"
   },
   {
-    "id": 4,
-    "type": "video",
-    "year": "2026",
-    "title": "Oklou - obvious, choke enough, blade bird | NTS Session",
-    "date": "2025.12.09",
-    "description": "테스트용 영상입니다. 오신 김에 한 번 들어보세요.",
-    "youtubeId": "ADtPzdWiTQ0"
-  },
-  {
     "id": 5,
     "type": "photo",
     "year": "2021",
@@ -57,15 +48,6 @@
       "images/dd_final_page_11.jpg"
     ]
   },
-   {
-    "id": 6,
-    "type": "video",
-    "year": "2026",
-    "title": "Frank Ocean - Pilot jones (Live in Amsterdam)",
-    "date": "2013.09.18",
-    "description": "테스트용 영상입니다. 오신 김에 한 번 들어보세요.",
-    "vimeoId": "74801407"
-  },
   {
     "id": 7,
     "type": "photo",
@@ -74,5 +56,14 @@
     "date": "2025.05.12",
     "description": "디지털비디오와 무빙이미지 중간과제 Saul Bass 레포트 표지 디자인",
     "imageSrc": "images/saulbassreport_01.jpg"
+  },
+  {
+    "id": 8,
+    "type": "video",
+    "year": "2025",
+    "title": "CF워크숍 맥심슈프림골드 최종프로젝트",
+    "date": "2025.12.10",
+    "description": "CF워크숍 수업의 최종 프로젝트 결과물입니다. 맥심 슈프림골드 제품 광고의 감독으로 참여했습니다.",
+    "youtubeId": "FQq5jGaWMI"
   }
 ]
